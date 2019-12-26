@@ -1,0 +1,47 @@
+{
+  "name": "dice",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "cranium": "node src/dice/cranium.js",
+    "lint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
+    "prettier": "prettier \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "prettier:write": "npm run prettier -- --write",
+    "test": "jest --passWithNoTests",
+    "validate": "npm run lint && npm run prettier -- --list-different"
+  },
+  "devDependencies": {
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.8.0",
+    "husky": "3.1.0",
+    "jest": "24.9.0",
+    "lint-staged": "9.5.0",
+    "prettier": "1.19.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "env": {
+      "es6": true,
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "camelcase": "error",
+      "no-console": "error",
+      "no-var": "error"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && npm run validate",
+      "pre-push": "npm test"
+    }
+  }
+}
